@@ -1,0 +1,1 @@
+export type TUserRoles = 'seller'|'buyer'|'admin';
