@@ -19,6 +19,7 @@ const userSchema = new Schema<TUser>({
     },
     lastName: {
       type: String,
+      required: true,
     },
   },
   role: {
