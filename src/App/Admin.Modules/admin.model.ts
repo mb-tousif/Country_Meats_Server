@@ -3,10 +3,12 @@ import { AdminModel, TAdmin } from "./admin.interfaces";
 import bcrypt from "bcrypt";
 import config from "../../Config";
 
-const adminSchema = new Schema<TAdmin>({
+const adminSchema = new Schema<TAdmin>(
+  {
     password: {
       type: String,
       required: true,
+      select: 0,
     },
     phoneNumber: {
       type: String,
@@ -24,8 +26,8 @@ const adminSchema = new Schema<TAdmin>({
       },
     },
     role: {
-        type: [String],
-        enum: ["admin"],
+      type: [String],
+      enum: ["admin"],
     },
     address: {
       type: String,
@@ -34,24 +36,24 @@ const adminSchema = new Schema<TAdmin>({
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   }
-  );
+);
 
-  adminSchema.pre("save", function (next) {
-    if (!this.isModified("password")) {
-      return next();
-    }
-  
-    const password = this.password;
-    const hashedPassword = bcrypt.hashSync(password, config.jwt.saltRounds);
-    this.password = hashedPassword;
-    next();
-  });
-  
-  adminSchema.methods.comparePassword = function (password:string, hash:string) {
-    const isPasswordValid = bcrypt.compareSync(password, hash);
-    return isPasswordValid;
-  };
-  
-  
-  export const Admin = model<TAdmin, AdminModel>("Admin", adminSchema);
+// Hash Password
+adminSchema.pre("save", function (next) {
+  if (!this.isModified("password")) {
+    return next();
+  }
+  const password = this.password;
+  const hashedPassword = bcrypt.hashSync(
+    password,
+    Number(config.jwt.saltRounds)
+  );
+  this.password = hashedPassword;
+  next();
+});
+
+export const Admin = model<TAdmin, AdminModel>("Admin", adminSchema);
