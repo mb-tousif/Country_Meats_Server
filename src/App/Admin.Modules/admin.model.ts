@@ -43,7 +43,7 @@ const adminSchema = new Schema<TAdmin>({
     }
   
     const password = this.password;
-    const hashedPassword = bcrypt.hashSync(password, config.saltRounds);
+    const hashedPassword = bcrypt.hashSync(password, config.jwt.saltRounds);
     this.password = hashedPassword;
     next();
   });
