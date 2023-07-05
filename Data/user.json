@@ -94,5 +94,16 @@
     "phoneNumber": "+880198765432",
     "role": "seller",
     "address": "Tokyo"
+  },
+  {
+    "password": "NewPass2023",
+    "phoneNumber": "+880133557788",
+    "name": {
+      "firstName": "Sarah",
+      "lastName": "Williams"
+    },
+    "role": "buyer",
+    "address": "Melbourne",
+    "budget": 2800000
   }
 ]

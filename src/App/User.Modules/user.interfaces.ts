@@ -2,6 +2,7 @@ import { Model } from "mongoose";
 import { TUserRoles } from "../Constants/userConstants";
 
 export type TUser = {
+  id: string;
   phoneNumber: string;
   password: string;
   name: {

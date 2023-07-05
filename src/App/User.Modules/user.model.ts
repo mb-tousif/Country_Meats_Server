@@ -6,6 +6,11 @@ import Config from "../../Config";
 import httpStatus from "http-status";
 
 const userSchema = new Schema<TUser>({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   password: {
     type: String,
     required: true,

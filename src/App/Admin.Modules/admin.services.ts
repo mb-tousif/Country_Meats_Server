@@ -1,10 +1,11 @@
 import httpStatus from "http-status";
 import ServerAPIError from "../Error/serverAPIError";
-import { TAdmin, TLoginInfo } from "./admin.interfaces";
+import { TAdmin} from "./admin.interfaces";
 import { Admin } from "./admin.model";
 import { generateToken } from "../../Utilities/jwtHandler";
 import Config from "../../Config";
 import { Secret } from "jsonwebtoken";
+import { TLoginInfo } from "../Constants/userConstants";
 
 export const createAdminService = async (adminInfo: TAdmin) => {
   const result = await Admin.create(adminInfo);
