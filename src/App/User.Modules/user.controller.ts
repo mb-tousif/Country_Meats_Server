@@ -10,17 +10,6 @@ export const updateUserById: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const id = req.params.id;
     const userInfo = req.body;
-    if (userInfo.role === "buyer" && (userInfo.budget as number) <= 0) {
-      next(new ServerAPIError(false, 400, "Budget must be greater than 0"));
-    }
-    if (userInfo.role === "buyer" && userInfo.income) {
-      userInfo.income = undefined;
-      next(new ServerAPIError(false, 400, "As a buyer you can't have an income"));
-    }
-    if (userInfo.role === "seller" && userInfo.budget) {
-      userInfo.budget = undefined;
-      next(new ServerAPIError(false, 400, "As a seller you can't have a budget"));
-    }
     const result = await updateUserByIdService(id, userInfo); 
     if (!result) {
       return next( new ServerAPIError(false, httpStatus.NOT_FOUND, "User not found 💥"));

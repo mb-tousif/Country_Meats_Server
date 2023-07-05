@@ -14,4 +14,10 @@ export type TUser = {
   income?: number;
 };
 
-export type UserModel = Model<TUser, Record<string, unknown>>;
+// export type UserModel = Model<TUser, Record<string, unknown>>;
+export type UserModel = {
+  isPasswordMatched(
+    givenPassword: string,
+    savedPassword: string
+  ): Promise<boolean>;
+} & Model<TUser>;
