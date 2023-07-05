@@ -8,7 +8,7 @@ const adminSchema = new Schema<TAdmin>(
     password: {
       type: String,
       required: true,
-      select: 0,
+      // select: false,
     },
     phoneNumber: {
       type: String,
@@ -55,5 +55,13 @@ adminSchema.pre("save", function (next) {
   this.password = hashedPassword;
   next();
 });
+
+// Compare Password
+adminSchema.statics.isPasswordMatched = async function (
+  givenPassword: string,
+  savedPassword: string
+): Promise<boolean> {
+  return await bcrypt.compare(givenPassword, savedPassword);
+};
 
 export const Admin = model<TAdmin, AdminModel>("Admin", adminSchema);

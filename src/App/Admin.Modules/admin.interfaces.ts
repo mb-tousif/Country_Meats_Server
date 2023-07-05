@@ -12,4 +12,10 @@ export type TAdmin = {
   address: string;
 };
 
-export type AdminModel = Model<TAdmin, Record<string, unknown>>;
+// export type AdminModel = Model<TAdmin, Record<string, unknown>>;
+export type AdminModel = {
+  isPasswordMatched(
+    givenPassword: string,
+    savedPassword: string
+  ): Promise<boolean>;
+} & Model<TAdmin>;

@@ -5,6 +5,8 @@ import ResponseHandler from "../../Utilities/responseHandler";
 import { TAdmin } from "./admin.interfaces";
 import ServerAPIError from "../../App/Error/serverAPIError";
 import AsyncHandler from "../../Utilities/asyncHandler";
+import { Admin } from "./admin.model";
+import Config from "../../Config";
 
 export const createAdmin: RequestHandler = AsyncHandler(
   async (req, res, next) => {
@@ -16,9 +18,9 @@ export const createAdmin: RequestHandler = AsyncHandler(
           false,
           httpStatus.BAD_REQUEST,
           "Admin not created 💥"
-        )
-      );
-    }
+          )
+          );
+        }
     ResponseHandler<TAdmin>(res, {
       statusCode: httpStatus.CREATED,
       success: true,
@@ -29,24 +31,31 @@ export const createAdmin: RequestHandler = AsyncHandler(
 );
 
 export const loginAdmin: RequestHandler = AsyncHandler(
-    async (req, res, next) => {
-        const loginInfo = req.body;
-        const result = await loginAdminService(loginInfo.phoneNumber);
-        if (!result) {
-            return next(
-            new ServerAPIError(
-                false,
-                httpStatus.BAD_REQUEST,
-                "Admin not Found 💥"
-            )
-            );
-        }
-
-        ResponseHandler<TAdmin>(res, {
-            statusCode: httpStatus.CREATED,
-            success: true,
-            message: "Admin login successfully 🎉",
-            data: result,
-        });
+  async (req, res, next) => {
+    const loginInfo = req.body;
+    const result = await loginAdminService(loginInfo.phoneNumber);
+    if (!result) {
+      return next(
+        new ServerAPIError(false, httpStatus.BAD_REQUEST, "Admin not Found 💥")
+      );
     }
+    const matchPassword = await Admin.isPasswordMatched(loginInfo.password, result.password as string);
+    console.log(matchPassword);
+    
+    if (!matchPassword) {
+      return next(
+        new ServerAPIError(
+          false,
+          httpStatus.BAD_REQUEST,
+          "Password not matched 💥"
+          )
+          );
+        }
+    ResponseHandler<TAdmin>(res, {
+      statusCode: httpStatus.CREATED,
+      success: true,
+      message: "Admin login successfully 🎉",
+      data: result,
+    });
+  }
 );
