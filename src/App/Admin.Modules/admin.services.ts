@@ -27,8 +27,8 @@ export const loginAdminService = async (loginInfo: TLoginInfo) => {
       )
       }
   const { id, role } = result as TAdmin;
-  const accessToken = await generateToken( { id, role }, Config.jwt.secret as Secret, Config.jwt.expiresIn as string );
-  const refreshToken = await generateToken( { id, role }, Config.jwt.refreshSecret as Secret, Config.jwt.refreshExpiresIn as string );
+  const accessToken = generateToken( { id, role }, Config.jwt.secret as Secret, Config.jwt.expiresIn as string );
+  const refreshToken = generateToken( { id, role }, Config.jwt.refreshSecret as Secret, Config.jwt.refreshExpiresIn as string );
   const data = {
     accessToken,
     refreshToken,

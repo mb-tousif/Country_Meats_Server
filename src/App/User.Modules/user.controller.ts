@@ -1,28 +1,10 @@
 import { RequestHandler } from "express";
-import { createUserService, deleteUserByIdService, getAllUserByIdService, getAllUserService, updateUserByIdService } from "./user.services";
+import { deleteUserByIdService, getAllUserByIdService, getAllUserService, updateUserByIdService } from "./user.services";
 import httpStatus from "http-status";
 import { TUser } from "./user.interfaces";
 import AsyncHandler from "../../Utilities/asyncHandler";
 import ServerAPIError from "../Error/serverAPIError";
 import ResponseHandler from "../../Utilities/responseHandler";
-
-export const createUser: RequestHandler = AsyncHandler(
-  async (req, res, next) => {
-    const userInfo = req.body;
-    const result = await createUserService(userInfo);
-    if (!result) {
-      return next(
-        new ServerAPIError(false, httpStatus.BAD_REQUEST, "User not created 💥")
-      );
-    }
-    ResponseHandler<TUser>(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: "User created successfully 🎉",
-      data: result,
-    });
-  }
-);
 
 export const updateUserById: RequestHandler = AsyncHandler(
   async (req, res, next) => {
