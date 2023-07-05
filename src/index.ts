@@ -6,10 +6,12 @@ import ConnectSerer from "./Server/server";
 import router from "./App/Router";
 import GlobalErrorHandler from "./Utilities/globalErrorHandler";
 import config from "./Config";
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 const app : Application = express();
 app.use(cors({ origin: "*" }));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

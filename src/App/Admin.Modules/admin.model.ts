@@ -5,6 +5,11 @@ import config from "../../Config";
 
 const adminSchema = new Schema<TAdmin>(
   {
+    id: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     password: {
       type: String,
       required: true,

@@ -2,6 +2,7 @@ import { Model } from "mongoose";
 import { TAdminRoles } from "../Constants/admin.constants";
 
 export type TAdmin = {
+  id: string;
   phoneNumber: string;
   password: string;
   name: {
@@ -10,6 +11,11 @@ export type TAdmin = {
   };
   role: TAdminRoles;
   address: string;
+};
+
+export type TLoginInfo = {
+  phoneNumber: string;
+  password: string;
 };
 
 // export type AdminModel = Model<TAdmin, Record<string, unknown>>;

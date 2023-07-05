@@ -5,8 +5,8 @@ import ResponseHandler from "../../Utilities/responseHandler";
 import { TAdmin } from "./admin.interfaces";
 import ServerAPIError from "../../App/Error/serverAPIError";
 import AsyncHandler from "../../Utilities/asyncHandler";
-import { Admin } from "./admin.model";
 import Config from "../../Config";
+import { TLoginResponse } from "../Constants/jwt.constants.interface";
 
 export const createAdmin: RequestHandler = AsyncHandler(
   async (req, res, next) => {
@@ -33,29 +33,21 @@ export const createAdmin: RequestHandler = AsyncHandler(
 export const loginAdmin: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const loginInfo = req.body;
-    const result = await loginAdminService(loginInfo.phoneNumber);
-    if (!result) {
-      return next(
-        new ServerAPIError(false, httpStatus.BAD_REQUEST, "Admin not Found 💥")
-      );
-    }
-    const matchPassword = await Admin.isPasswordMatched(loginInfo.password, result.password as string);
-    console.log(matchPassword);
-    
-    if (!matchPassword) {
-      return next(
-        new ServerAPIError(
-          false,
-          httpStatus.BAD_REQUEST,
-          "Password not matched 💥"
-          )
-          );
-        }
-    ResponseHandler<TAdmin>(res, {
+    const result = await loginAdminService(loginInfo);
+    const { refreshToken, ...others } = result;
+
+  // set refresh token into cookie
+  const cookieOptions = {
+    secure: Config.env === 'production',
+    httpOnly: true,
+  };
+
+  res.cookie('refreshToken', refreshToken, cookieOptions);
+    ResponseHandler<TLoginResponse>(res, {
       statusCode: httpStatus.CREATED,
       success: true,
       message: "Admin login successfully 🎉",
-      data: result,
+      data: others,
     });
   }
 );
