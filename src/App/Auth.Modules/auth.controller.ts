@@ -56,7 +56,7 @@ export const refreshToken: RequestHandler = AsyncHandler(
     ResponseHandler<TRefreshTokenResponse>(res, {
       statusCode: httpStatus.CREATED,
       success: true,
-      message: "User login successfully 🎉",
+      message: "New access token generated successfully 🎉",
       data: result,
     });
   }

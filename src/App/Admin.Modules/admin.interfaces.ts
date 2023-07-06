@@ -1,5 +1,4 @@
 import { Model } from "mongoose";
-import { TAdminRoles } from "../Constants/admin.constants";
 
 export type TAdmin = {
   id: string;
@@ -9,7 +8,7 @@ export type TAdmin = {
     firstName: string;
     lastName: string;
   };
-  role: TAdminRoles;
+  role: string;
   address: string;
 };
 

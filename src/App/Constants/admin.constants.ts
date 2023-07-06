@@ -1,1 +1,0 @@
-export type TAdminRoles = ['admin'];

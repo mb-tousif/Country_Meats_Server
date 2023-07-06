@@ -7,7 +7,6 @@ const adminSchema = new Schema<TAdmin>(
   {
     id: {
       type: String,
-      required: true,
       unique: true,
     },
     password: {
@@ -31,7 +30,7 @@ const adminSchema = new Schema<TAdmin>(
       },
     },
     role: {
-      type: [String],
+      type: String,
       enum: ["admin"],
     },
     address: {
