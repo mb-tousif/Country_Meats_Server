@@ -3,9 +3,10 @@ import ServerAPIError from "../Error/serverAPIError";
 import { TUser } from "../User.Modules/user.interfaces";
 import { User } from "../User.Modules/user.model";
 import { TLoginInfo } from "../Constants/userConstants";
-import { generateToken } from "../../Utilities/jwtHandler";
+import { generateToken, verifyToken } from "../../Utilities/jwtHandler";
 import Config from "../../Config";
 import { Secret } from "jsonwebtoken";
+import { TRefreshTokenResponse } from "../Constants/jwt.constants.interface";
 
 export const createAuthService = async (userInfo: TUser) => {
   const result = await User.create(userInfo);
@@ -36,3 +37,16 @@ export const loginAuthService = async (loginInfo: TLoginInfo) => {
     };
     return data;
   };
+
+export const refreshTokenService = async (refreshToken: string): Promise<TRefreshTokenResponse> => {
+  let verifiedToken = null;
+  try {
+    verifiedToken = verifyToken(refreshToken, Config.jwt.refreshSecret as Secret);
+  } catch (error) {
+    throw new ServerAPIError(false, httpStatus.UNAUTHORIZED, "Invalid Token");
+
+  }
+  const { id, role } = verifiedToken as TUser;
+  const newAccessToken = generateToken( { id, role }, Config.jwt.secret as Secret, Config.jwt.expiresIn as string );
+  return {accessToken : newAccessToken};
+};
