@@ -54,7 +54,16 @@ export const createOrderService = async (orderInfo: TOrder) => {
 };
 
 export const getAllOrdersService = async () => {
-  const orders = await Order.find()
-//   const orders = await Order.find().populate("buyer").populate("cow");
+  const orders = await Order.find().populate("buyer").populate("cow").populate("seller");
+  if (!orders ) {
+    throw new ServerAPIError(false, httpStatus.NOT_FOUND, "Orders not found 💥");
+  }
   return orders;
 };
+// export const getAllOrdersService = async (userId: string) => {
+//   const orders = await Order.find({ $or: [{ buyer: userId }, { seller: userId }] }).populate("buyer").populate("cow").populate("seller");
+//   if (!orders ) {
+//     throw new ServerAPIError(false, httpStatus.NOT_FOUND, "Orders not found 💥");
+//   }
+//   return orders;
+// };
