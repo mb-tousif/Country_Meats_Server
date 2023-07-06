@@ -6,8 +6,8 @@ const router = express.Router();
 
 // router.get('/users', getAllUsers);
 router.get('/users', authPermission(ENUM_USER_ROLE.ADMIN), getAllUsers);
-router.get('/users/:id', getUserById)
-router.patch('/users/:id', updateUserById)
-router.delete('/users/:id', deleteUserById);
+router.get('/users/:id', authPermission(ENUM_USER_ROLE.ADMIN), getUserById)
+router.patch('/users/:id', authPermission(ENUM_USER_ROLE.ADMIN), updateUserById)
+router.delete('/users/:id', authPermission(ENUM_USER_ROLE.ADMIN), deleteUserById);
 
 export const userRoutes = router;
