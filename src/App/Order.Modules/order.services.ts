@@ -5,6 +5,7 @@ import { User } from "../User.Modules/user.model";
 import { TOrder } from "./order.interface";
 import { Order } from "./order.model";
 import httpStatus from "http-status";
+import { getUserInfoFromToken } from "../../Utilities/getInfoFromToken";
 
 export const createOrderService = async (orderInfo: TOrder) => {
   const { buyer, cow, quantity = 1 } = orderInfo;
@@ -30,7 +31,7 @@ export const createOrderService = async (orderInfo: TOrder) => {
         const sellerId = await Cow.findById(cow).select("seller");
         await User.findByIdAndUpdate(
           sellerId?.seller,
-          { income: +total },
+          { $inc: { income: +total } },
           { session }
         );
         orderInfo.totalPayment = total;
@@ -53,16 +54,10 @@ export const createOrderService = async (orderInfo: TOrder) => {
   }
 };
 
-export const getAllOrdersService = async () => {
-  const orders = await Order.find().populate("buyer").populate("cow").populate("seller");
-  if (!orders ) {
-    throw new ServerAPIError(false, httpStatus.NOT_FOUND, "Orders not found 💥");
-  }
-  return orders;
-};
-
-export const getOrdersByUserService = async (id: string) => {
-  const orders = await Order.find({ $or: [{ buyer: id }, { seller: id }] }).populate("buyer").populate("cow").populate("seller");
+export const getAllOrdersService = async (token:string) => {
+  const userInfo = getUserInfoFromToken(token);
+  const { _id, role } = userInfo;
+  const orders = (role !== "admin") ? (await Order.find({ $or: [{ buyer: _id }, { seller: _id }] }).populate("buyer").populate("cow").populate("seller")): (await Order.find().populate("buyer").populate("cow").populate("seller"));
   if (!orders || orders.length === 0 ) {
     throw new ServerAPIError(false, httpStatus.NOT_FOUND, "Orders not found 💥");
   }

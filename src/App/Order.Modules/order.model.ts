@@ -26,6 +26,9 @@ const orderSchema = new Schema<TOrder>({
 },
 {
     timestamps: true,
+    toJSON: {
+        virtuals: true,
+      },
 });
 
 orderSchema.pre<TOrder>("save", async function (next) {

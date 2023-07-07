@@ -35,7 +35,6 @@
 
 - `api/v1/orders` (POST)
 - `api/v1/orders` (GET)
-- `api/v1/orders/:id` (GET Order by Specific User)
 
 #### Bonus Part
 - `api/v1/orders/:id` (GET)

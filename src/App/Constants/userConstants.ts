@@ -1,4 +1,4 @@
-export type TUserRoles = 'seller'|'buyer' | 'admin';
+export type TUserRoles = 'seller'|'buyer';
 
 export type TLoginInfo = {
     phoneNumber: string;

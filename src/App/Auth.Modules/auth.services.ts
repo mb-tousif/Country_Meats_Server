@@ -28,9 +28,9 @@ export const loginAuthService = async (loginInfo: TLoginInfo) => {
         "Password not matched 💥"
         )
         }
-    const { id, role } = result as TUser;
-    const accessToken = generateToken( { id, role }, Config.jwt.secret as Secret, Config.jwt.expiresIn as string );
-    const refreshToken = generateToken( { id, role }, Config.jwt.refreshSecret as Secret, Config.jwt.refreshExpiresIn as string );
+    const { _id, role } = result as any;
+    const accessToken = generateToken( { _id, role }, Config.jwt.secret as Secret, Config.jwt.expiresIn as string );
+    const refreshToken = generateToken( { _id, role }, Config.jwt.refreshSecret as Secret, Config.jwt.refreshExpiresIn as string );
     const data = {
       accessToken,
       refreshToken,
