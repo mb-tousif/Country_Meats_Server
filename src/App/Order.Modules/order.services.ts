@@ -60,10 +60,11 @@ export const getAllOrdersService = async () => {
   }
   return orders;
 };
-// export const getAllOrdersService = async (userId: string) => {
-//   const orders = await Order.find({ $or: [{ buyer: userId }, { seller: userId }] }).populate("buyer").populate("cow").populate("seller");
-//   if (!orders ) {
-//     throw new ServerAPIError(false, httpStatus.NOT_FOUND, "Orders not found 💥");
-//   }
-//   return orders;
-// };
+
+export const getOrdersByUserService = async (id: string) => {
+  const orders = await Order.find({ $or: [{ buyer: id }, { seller: id }] }).populate("buyer").populate("cow").populate("seller");
+  if (!orders || orders.length === 0 ) {
+    throw new ServerAPIError(false, httpStatus.NOT_FOUND, "Orders not found 💥");
+  }
+  return orders;
+};

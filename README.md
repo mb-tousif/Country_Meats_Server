@@ -31,19 +31,11 @@
 - `api/v1/cows/:id` (Update Single Cow-PATCH)
 - `api/v1/cows/:id` (DELETE Single Cow)
 
-### Pagination and Filtering routes of Cows
-
-- `api/v1/cows?page=1&limit=5`
-- `api/v1/cows?sortBy=price&sortOrder=asc`
-- `api/v1/cows?weight=350`
-- `api/v1/cows?location=Chittagong`
-- `api/v1/cows?searchTerm=Chi`
-- `api/v1/cows?minPrice=20000&maxPrice=70000`
-
 ### Orders
 
 - `api/v1/orders` (POST)
 - `api/v1/orders` (GET)
+- `api/v1/orders/:id` (GET Order by Specific User)
 
 #### Bonus Part
 - `api/v1/orders/:id` (GET)
