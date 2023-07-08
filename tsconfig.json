@@ -4,7 +4,7 @@
     "target": "ES6",                                 
     /* Modules */
     "module": "commonjs",  
-    "rootDir": "./",                                
+    "rootDir": "./src",                                
     "outDir": "./dist",
     "esModuleInterop": true,
     "sourceMap": true,
@@ -12,6 +12,5 @@
     "strict": true,                                  
     /* Completeness */
     "skipLibCheck": true       
-  },
-  "include": ["**/src/*.ts"]
+  }
 }

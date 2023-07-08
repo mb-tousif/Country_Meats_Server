@@ -2,8 +2,8 @@ import { ErrorRequestHandler } from "express";
 import config from "../Config";
 import { IGenericErrorMessage } from "../App/Error/interfaceError";
 import httpStatus from "http-status";
-import HandleZodError from "../App/Error/HandleZodError";
-import HandleMongooseError from "../App/Error/HandleMongooseError";
+import HandleZodError from "../App/Error/handleZodError";
+import HandleMongooseError from "../App/Error/handleMongooseError";
 
 const GlobalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   config.env === "development"
