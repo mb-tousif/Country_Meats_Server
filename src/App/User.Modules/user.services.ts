@@ -1,4 +1,6 @@
+import httpStatus from "http-status";
 import { getUserInfoFromToken } from "../../Utilities/getInfoFromToken";
+import ServerAPIError from "../Error/serverAPIError";
 import { TUser } from "./user.interfaces";
 import { User } from "./user.model";
 
@@ -8,7 +10,20 @@ export const getAllUserService = async () => {
 };
 
 export const updateUserByIdService = async (id: string, userInfo: Partial<TUser>) => {
-    const result = User.findByIdAndUpdate(id, userInfo, { new: true });
+    const user = await User.findOne({_id: id});
+    if (!user) {
+        throw new ServerAPIError(false, httpStatus.NOT_FOUND, "User not found 💥");
+    }
+    const { name, ...otherData} = userInfo;
+    const updatedUserData: Partial<TUser> = { ...otherData};
+
+  if (name && Object.keys(name).length > 0) {
+    Object.keys(name).forEach(key => {
+      const nameKey = `name.${key}` as keyof Partial<TUser>;
+      (updatedUserData as any)[nameKey] = name[key as keyof typeof name];
+    });
+  }
+    const result = User.findByIdAndUpdate(id, updatedUserData, { new: true }).lean();
     return result;
 };
 
