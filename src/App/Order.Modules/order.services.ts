@@ -63,3 +63,16 @@ export const getAllOrdersService = async (token:string) => {
   }
   return orders;
 };
+
+export const getOrderByIdService = async (token:string, id:string): Promise<TOrder> => {
+  const userInfo = getUserInfoFromToken(token);
+  const { _id } = userInfo;
+  if (id !== _id) {
+    throw new ServerAPIError(false, httpStatus.UNAUTHORIZED, "User id not matched 💥");
+  }
+  const order = await Order.findOne({ $or: [{ buyer: _id }, { seller: _id }] }).populate("buyer").populate("cow").populate("seller").lean();
+  if (!order ) {
+    throw new ServerAPIError(false, httpStatus.NOT_FOUND, "Order not found 💥");
+  }
+  return order;
+};
