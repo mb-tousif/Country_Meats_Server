@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { deleteUserByIdService, getAllUserByIdService, getAllUserService, updateUserByIdService } from "./user.services";
+import { deleteUserByIdService, getAllUserByIdService, getAllUserService, getUserProfileService, updateUserByIdService } from "./user.services";
 import httpStatus from "http-status";
 import { TUser } from "./user.interfaces";
 import AsyncHandler from "../../Utilities/asyncHandler";
@@ -61,6 +61,24 @@ export const getUserById: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const id = req.params.id;
     const result = await getAllUserByIdService(id);
+    if (!result) {
+      return next(
+        new ServerAPIError(false, httpStatus.NOT_FOUND, "User not Found 💥")
+      );
+    }
+    ResponseHandler<TUser>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: "User fetched successfully 🎉",
+      data: result,
+    });
+  }
+);
+
+export const getUserProfile: RequestHandler = AsyncHandler(
+  async (req, res, next) => {
+    const token = req.headers.authorization;
+    const result = await getUserProfileService(token as string);
     if (!result) {
       return next(
         new ServerAPIError(false, httpStatus.NOT_FOUND, "User not Found 💥")
