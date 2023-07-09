@@ -5,7 +5,7 @@ import { TUser } from "./user.interfaces";
 import { User } from "./user.model";
 
 export const getAllUserService = async () => {
-  const result = await User.find();
+  const result = await User.find().select("-password").lean();
   return result;
 };
 

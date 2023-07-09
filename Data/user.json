@@ -1,0 +1,109 @@
+[
+    {
+      "name": {
+        "firstName": "Jhankar",
+        "lastName": "Mahbub"
+      },
+      "password": "JhankarPh",
+      "phoneNumber": "+880132345689",
+      "role": "buyer",
+      "address": "Dhaka",
+      "budget": 5000000
+    },
+    {
+      "name": {
+        "firstName": "John",
+        "lastName": "Doe"
+      },
+      "password": "Password123",
+      "phoneNumber": "+880178945632",
+      "role": "buyer",
+      "address": "New York",
+      "budget": 1000000
+    },
+    {
+      "name": {
+        "firstName": "Jane",
+        "lastName": "Smith"
+      },
+      "password": "SecurePass",
+      "phoneNumber": "+880199876543",
+      "role": "buyer",
+      "address": "London",
+      "budget": 3000000
+    },
+    {
+      "name": {
+        "firstName": "Michael",
+        "lastName": "Johnson"
+      },
+      "password": "MyPass123",
+      "phoneNumber": "+880187654321",
+      "role": "buyer",
+      "address": "Los Angeles",
+      "budget": 2500000
+    },
+    {
+      "name": {
+        "firstName": "Emily",
+        "lastName": "Brown"
+      },
+      "password": "SecretWord",
+      "phoneNumber": "+880144738291",
+      "role": "buyer",
+      "address": "Sydney",
+      "budget": 4000000
+    },
+    {
+      "name": {
+        "firstName": "Oliver",
+        "lastName": "Taylor"
+      },
+      "password": "StrongPass",
+      "phoneNumber": "+880177889900",
+      "role": "seller",
+      "address": "Berlin"
+    },
+    {
+      "password": "Secure123",
+      "phoneNumber": "+880156789012",
+      "name": {
+        "firstName": "Sophia",
+        "lastName": "Lee"
+      },
+      "role": "buyer",
+      "address": "Paris",
+      "budget": 2000000
+    },
+    {
+      "name": {
+        "firstName": "Emma",
+        "lastName": "Anderson"
+      },
+      "password": "12345678",
+      "phoneNumber": "+880123456789",
+      "role": "seller",
+      "address": "Stockholm"
+    },
+    {
+      "name": {
+        "firstName": "William",
+        "lastName": "Jones"
+      },
+      "password": "Pa55word",
+      "phoneNumber": "+880198765432",
+      "role": "seller",
+      "address": "Tokyo"
+    },
+    {
+      "password": "NewPass2023",
+      "phoneNumber": "+880133557788",
+      "name": {
+        "firstName": "Sarah",
+        "lastName": "Williams"
+      },
+      "role": "buyer",
+      "address": "Melbourne",
+      "budget": 2800000
+    }
+  ]

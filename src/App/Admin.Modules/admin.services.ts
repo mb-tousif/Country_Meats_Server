@@ -9,7 +9,7 @@ import { TLoginInfo } from "../Constants/userConstants";
 
 export const createAdminService = async (adminInfo: TAdmin) => {
   const result = await Admin.create(adminInfo);
-  const data =  await Admin.findOne({ _id: result._id }).select("-password");
+  const data =  await Admin.findOne({ _id: result?._id }).select("-password");
   return data;
 };
 
