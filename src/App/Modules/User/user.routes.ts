@@ -1,7 +1,7 @@
 import express from 'express';
 import { deleteUserById, getAllUsers, getUserById, getUserProfile, updateUserById, updateUserProfile } from './user.controller';
-import authPermission from '../../Middleware/authPermission';
-import { ENUM_USER_ROLE } from '../Constants/enums.user';
+import authPermission from '../../../Middleware/authPermission';
+import { ENUM_USER_ROLE } from '../../Constants/enums.user';
 const router = express.Router();
 
 // router.get('/users', getAllUsers);

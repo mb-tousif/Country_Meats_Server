@@ -8,11 +8,11 @@ import {
   getCowByIdService,
   updateCowByIdService,
 } from "./cow.services";
-import AsyncHandler from "../../Utilities/asyncHandler";
-import ServerAPIError from "../Error/serverAPIError";
-import ResponseHandler from "../../Utilities/responseHandler";
-import { cowSearchQueryFields, paginationFields } from "../Constants/paginationConstants";
-import PaginationQueryHandler from "../../Utilities/paginationQueryHandler";
+import AsyncHandler from "../../../Utilities/asyncHandler";
+import ServerAPIError from "../../Error/serverAPIError";
+import ResponseHandler from "../../../Utilities/responseHandler";
+import { cowSearchQueryFields, paginationFields } from "../../Constants/paginationConstants";
+import PaginationQueryHandler from "../../../Utilities/paginationQueryHandler";
 
 export const createCow: RequestHandler = AsyncHandler(
   async (req, res, next) => {

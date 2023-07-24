@@ -2,9 +2,9 @@ import { RequestHandler } from "express";
 import { deleteUserByIdService, getAllUserByIdService, getAllUserService, getUserProfileService, updateProfileService, updateUserByIdService } from "./user.services";
 import httpStatus from "http-status";
 import { TUser } from "./user.interfaces";
-import AsyncHandler from "../../Utilities/asyncHandler";
-import ServerAPIError from "../Error/serverAPIError";
-import ResponseHandler from "../../Utilities/responseHandler";
+import AsyncHandler from "../../../Utilities/asyncHandler";
+import ServerAPIError from "../../Error/serverAPIError";
+import ResponseHandler from "../../../Utilities/responseHandler";
 
 export const updateUserById: RequestHandler = AsyncHandler(
   async (req, res, next) => {

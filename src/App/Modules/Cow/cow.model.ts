@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
 import { CowModel, TCow } from "./cow.interfaces";
-import { ECcategory, ELabel, ELocation } from "../Constants/cowConstants";
+import { ECcategory, ELabel } from "../../Constants/cowConstants";
 import { model } from "mongoose";
 
 const cowSchema = new Schema<TCow>(
@@ -20,7 +20,6 @@ const cowSchema = new Schema<TCow>(
     },
     location: {
       type: String,
-      enum: ELocation,
       required: true,
     },
     breed: {

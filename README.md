@@ -1,4 +1,4 @@
-# Welcome to Digital Cow Hat.
+# Welcome to Country Meats LTD.
 
 ### Live site link[https://auth-backend-vert.vercel.app/]
 
@@ -18,8 +18,6 @@
 - `https://auth-backend-vert.vercel.app/api/v1/users/:id` ( GET Single User Data)
 - `https://auth-backend-vert.vercel.app/api/v1/users/:id` (Update Single User-PATCH)
 - `https://auth-backend-vert.vercel.app/api/v1/users/:id` (DELETE Single User)
-
-#### Bonus Part
 - `https://auth-backend-vert.vercel.app/api/v1/users/my-profile` (GET)
 - `https://auth-backend-vert.vercel.app/api/v1/users/my-profile` (PATCH)
 
@@ -35,6 +33,4 @@
 
 - `https://auth-backend-vert.vercel.app/api/v1/orders` (POST)
 - `https://auth-backend-vert.vercel.app/api/v1/orders` (GET)
-
-#### Bonus Part
 - `https://auth-backend-vert.vercel.app/api/v1/orders/:id` (GET)

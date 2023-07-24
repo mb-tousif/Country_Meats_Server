@@ -1,9 +1,9 @@
 import express from 'express';
-import { userRoutes } from '../User.Modules/user.routes';
-import { cowRoutes } from '../Cow.Modules/cow.routes';
-import { orderRoutes } from '../Order.Modules/order.routes';
-import { adminsRoutes } from '../Admin.Modules/admin.routes';
-import { authRoutes } from '../Auth.Modules/auth.routes';
+import { cowRoutes } from '../Modules/Cow/cow.routes';
+import { orderRoutes } from '../Modules/Order/order.routes';
+import { adminsRoutes } from '../Modules/Admin/admin.routes';
+import { authRoutes } from '../Modules/Auth/auth.routes';
+import { userRoutes } from '../Modules/User/user.routes';
 const router = express.Router();
 
 const moduleRoutes = [

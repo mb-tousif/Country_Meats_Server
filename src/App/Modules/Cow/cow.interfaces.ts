@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import { ECcategory, ELocation } from "../Constants/cowConstants";
+import { ECcategory } from "../../Constants/cowConstants";
 
 export type TCow = {
   name: string;
   age: number;
   price: number;
-  location: ELocation;
+  location: string;
   breed: string;
   weight: number;
   label: string;

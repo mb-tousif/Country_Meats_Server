@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { OrderModel, TOrder } from "./order.interface";
-import { Cow } from "../Cow.Modules/cow.model";
+import { Cow } from "../Cow/cow.model";
 
 const orderSchema = new Schema<TOrder>({
     buyer: {

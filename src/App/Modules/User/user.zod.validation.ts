@@ -2,6 +2,9 @@ import { z } from "zod";
 
 const createUserZodSchema = z.object({
   body: z.object({
+    email: z.string({
+        required_error: "Enter a valid email number",
+    }).email(),
     phoneNumber: z.string({
         required_error: "Phone number is required",
     }).min(10).max(20),

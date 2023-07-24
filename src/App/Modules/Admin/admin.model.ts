@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 import { AdminModel, TAdmin } from "./admin.interfaces";
 import bcrypt from "bcrypt";
-import config from "../../Config";
+import config from "../../../Config";
 
 const adminSchema = new Schema<TAdmin>(
   {
@@ -12,11 +12,14 @@ const adminSchema = new Schema<TAdmin>(
     password: {
       type: String,
       required: true,
-      // select: false,
+    },
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      unique: true,
     },
     phoneNumber: {
       type: String,
-      required: true,
       unique: true,
     },
     name: {

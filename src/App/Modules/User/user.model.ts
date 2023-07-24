@@ -1,9 +1,9 @@
 import { Schema, model } from "mongoose";
 import { TUser, UserModel } from "./user.interfaces";
-import ServerAPIError from "../Error/serverAPIError";
 import bcrypt from "bcrypt";
-import Config from "../../Config";
 import httpStatus from "http-status";
+import ServerAPIError from "../../Error/serverAPIError";
+import Config from "../../../Config";
 
 const userSchema = new Schema<TUser>({
   id: {
@@ -14,10 +14,14 @@ const userSchema = new Schema<TUser>({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: [true, "Email is required"],
+    unique: true,
+  },
   phoneNumber: {
     type: String,
     required: true,
-    unique: true,
   },
   name: {
     firstName: {

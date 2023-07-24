@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
-import { Cow } from "../Cow.Modules/cow.model";
-import ServerAPIError from "../Error/serverAPIError";
-import { User } from "../User.Modules/user.model";
+import ServerAPIError from "../../Error/serverAPIError";
 import { TOrder } from "./order.interface";
 import { Order } from "./order.model";
 import httpStatus from "http-status";
-import { getUserInfoFromToken } from "../../Utilities/getInfoFromToken";
+import { getUserInfoFromToken } from "../../../Utilities/getInfoFromToken";
+import { Cow } from "../Cow/cow.model";
+import { User } from "../User/user.model";
 
 export const createOrderService = async (orderInfo: TOrder) => {
   const { buyer, cow, quantity = 1 } = orderInfo;

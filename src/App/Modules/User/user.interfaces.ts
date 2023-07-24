@@ -1,21 +1,25 @@
 import { Model } from "mongoose";
+import { TUserRoles } from "../../Constants/userConstants";
 
-export type TAdmin = {
+export type TUser = {
   id: string;
+  email: string;
   phoneNumber: string;
   password: string;
   name: {
     firstName: string;
     lastName: string;
   };
-  role: string;
+  role: TUserRoles;
   address: string;
+  budget?: number;
+  income?: number;
 };
 
-// export type AdminModel = Model<TAdmin, Record<string, unknown>>;
-export type AdminModel = {
+// export type UserModel = Model<TUser, Record<string, unknown>>;
+export type UserModel = {
   isPasswordMatched(
     givenPassword: string,
     savedPassword: string
   ): Promise<boolean>;
-} & Model<TAdmin>;
+} & Model<TUser>;

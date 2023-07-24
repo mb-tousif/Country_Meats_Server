@@ -1,8 +1,8 @@
 import express from 'express';
-import ZodValidation from '../../Middleware/zodValidationHandler';
-import createUserZodSchema from '../User.Modules/user.zod.validation';
 import { createUser, loginAuth, refreshToken } from './auth.controller';
 import {authLoginZodSchema, refreshTokenZodSchema} from './auth.zod.validation';
+import ZodValidation from '../../../Middleware/zodValidationHandler';
+import createUserZodSchema from '../User/user.zod.validation';
 
 const router = express.Router();
 

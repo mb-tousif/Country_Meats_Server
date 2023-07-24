@@ -1,6 +1,6 @@
 import express from "express";
 import { createAdmin, loginAdmin } from "./admin.controller";
-import ZodValidation from "../../Middleware/zodValidationHandler";
+import ZodValidation from "../../../Middleware/zodValidationHandler";
 import createAdminZodValidation from "./admin.zod.validation"
 
 const router = express.Router();

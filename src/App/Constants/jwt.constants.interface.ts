@@ -9,5 +9,6 @@ export type TLoginResponse = {
 };
 
 export type TRefreshTokenResponse = {
-  accessToken: string;
+  accessToken?: string;
+  refreshToken?: string;
 };

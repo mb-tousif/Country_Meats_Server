@@ -1,8 +1,8 @@
 import httpStatus from "http-status";
-import { getUserInfoFromToken } from "../../Utilities/getInfoFromToken";
-import ServerAPIError from "../Error/serverAPIError";
 import { TUser } from "./user.interfaces";
 import { User } from "./user.model";
+import ServerAPIError from "../../Error/serverAPIError";
+import { getUserInfoFromToken } from "../../../Utilities/getInfoFromToken";
 
 export const getAllUserService = async () => {
   const result = await User.find().select("-password").lean();

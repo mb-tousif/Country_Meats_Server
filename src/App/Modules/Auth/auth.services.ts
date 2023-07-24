@@ -1,12 +1,12 @@
 import httpStatus from "http-status";
-import ServerAPIError from "../Error/serverAPIError";
-import { TUser } from "../User.Modules/user.interfaces";
-import { User } from "../User.Modules/user.model";
-import { TLoginInfo } from "../Constants/userConstants";
-import { generateToken, verifyToken } from "../../Utilities/jwtHandler";
-import Config from "../../Config";
 import { Secret } from "jsonwebtoken";
-import { TRefreshTokenResponse } from "../Constants/jwt.constants.interface";
+import { User } from "../User/user.model";
+import { TUser } from "../User/user.interfaces";
+import { TLoginInfo } from "../../Constants/userConstants";
+import ServerAPIError from "../../Error/serverAPIError";
+import { generateToken, verifyToken } from "../../../Utilities/jwtHandler";
+import Config from "../../../Config";
+import { TRefreshTokenResponse } from "./auth.interfaces";
 
 export const createAuthService = async (userInfo: TUser) => {
   const result = await User.create(userInfo);
@@ -15,7 +15,7 @@ export const createAuthService = async (userInfo: TUser) => {
 };
 
 export const loginAuthService = async (loginInfo: TLoginInfo) => {
-    const result = await User.findOne({ phoneNumber: loginInfo.phoneNumber });
+    const result = await User.findOne({ email: loginInfo.email });
     if (!result) {
       new ServerAPIError(false, httpStatus.BAD_REQUEST, "User not Found 💥")
     }

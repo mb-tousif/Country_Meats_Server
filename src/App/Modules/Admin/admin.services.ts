@@ -1,11 +1,11 @@
 import httpStatus from "http-status";
-import ServerAPIError from "../Error/serverAPIError";
 import { TAdmin} from "./admin.interfaces";
 import { Admin } from "./admin.model";
-import { generateToken } from "../../Utilities/jwtHandler";
-import Config from "../../Config";
 import { Secret } from "jsonwebtoken";
-import { TLoginInfo } from "../Constants/userConstants";
+import { TLoginInfo } from "../../Constants/userConstants";
+import ServerAPIError from "../../Error/serverAPIError";
+import { generateToken } from "../../../Utilities/jwtHandler";
+import Config from "../../../Config";
 
 export const createAdminService = async (adminInfo: TAdmin) => {
   const result = await Admin.create(adminInfo);
@@ -14,7 +14,7 @@ export const createAdminService = async (adminInfo: TAdmin) => {
 };
 
 export const loginAdminService = async (loginInfo: TLoginInfo) => {
-  const result = await Admin.findOne({ phoneNumber: loginInfo.phoneNumber });
+  const result = await Admin.findOne({ email: loginInfo.email });
   if (!result) {
     new ServerAPIError(false, httpStatus.BAD_REQUEST, "Admin not Found 💥")
   }

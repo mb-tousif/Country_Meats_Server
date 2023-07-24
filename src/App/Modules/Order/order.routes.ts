@@ -1,9 +1,9 @@
 import express from 'express';
-import ZodValidation from '../../Middleware/zodValidationHandler';
+import ZodValidation from '../../../Middleware/zodValidationHandler';
 import createOrderZodValidation from './order.zod.validation';
 import { createOrder, getAllOrders, getOrderById } from './order.controller';
-import authPermission from '../../Middleware/authPermission';
-import { ENUM_USER_ROLE } from '../Constants/enums.user';
+import authPermission from '../../../Middleware/authPermission';
+import { ENUM_USER_ROLE } from '../../Constants/enums.user';
 
 const router = express.Router();
 

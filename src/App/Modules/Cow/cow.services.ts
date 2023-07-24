@@ -1,11 +1,11 @@
 import { SortOrder } from "mongoose";
-import { TSearchedCow } from "../Constants/cowConstants";
+import { TSearchedCow } from "../../Constants/cowConstants";
 import {
   IPagination,
   IQueryResponse,
   cowSearchFields,
-} from "../Constants/paginationConstants";
-import { paginationHandler } from "../../Utilities/paginationHandler";
+} from "../../Constants/paginationConstants";
+import { paginationHandler } from "../../../Utilities/paginationHandler";
 import { TCow } from "./cow.interfaces";
 import { Cow } from "./cow.model";
 

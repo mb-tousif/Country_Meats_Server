@@ -1,12 +1,12 @@
 import { RequestHandler } from "express";
-import AsyncHandler from "../../Utilities/asyncHandler";
-import ServerAPIError from "../Error/serverAPIError";
-import ResponseHandler from "../../Utilities/responseHandler";
-import httpStatus from "http-status";
-import { TUser } from "../User.Modules/user.interfaces";
 import { createAuthService, loginAuthService, refreshTokenService } from "./auth.services";
-import Config from "../../Config";
-import { TLoginResponse, TRefreshTokenResponse } from "../Constants/jwt.constants.interface";
+import AsyncHandler from "../../../Utilities/asyncHandler";
+import ServerAPIError from "../../Error/serverAPIError";
+import httpStatus from "http-status";
+import ResponseHandler from "../../../Utilities/responseHandler";
+import Config from "../../../Config";
+import { TLoginResponse, TRefreshTokenResponse } from "../../Constants/jwt.constants.interface";
+import { TUser } from "../User/user.interfaces";
 
 export const createUser: RequestHandler = AsyncHandler(
   async (req, res, next) => {

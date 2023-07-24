@@ -3,10 +3,10 @@ import cors from "cors";
 import httpStatus from 'http-status';
 import dotenv from "dotenv";
 import ConnectSerer from "./Server/server";
-import router from "./App/Router";
 import GlobalErrorHandler from "./Utilities/globalErrorHandler";
 import config from "./Config";
 import cookieParser from 'cookie-parser';
+import router from "./App/Router";
 
 dotenv.config();
 const app : Application = express();
