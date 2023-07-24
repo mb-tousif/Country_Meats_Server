@@ -6,18 +6,18 @@ import {
   searchFields,
 } from "../../Constants/paginationConstants";
 import { paginationHandler } from "../../../Utilities/paginationHandler";
-import { TCow } from "./cow.interfaces";
-import { Cow } from "./cow.model";
+import { TGoat } from "./goat.interfaces";
+import { Goat } from "./goat.model";
 
-export const createCowService = async (cowInfo: TCow) => {
-  const result = await Cow.create(cowInfo);
+export const createGoatService = async (goatInfo: TGoat) => {
+  const result = await Goat.create(goatInfo);
   return result;
 };
 
-export const getAllCowService = async (
+export const getAllGoatService = async (
   paginationOptions: IPagination,
   searchQuery: TSearched
-): Promise<IQueryResponse<TCow[]>> => {
+): Promise<IQueryResponse<TGoat[]>> => {
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHandler(paginationOptions);
   const { searchTerm, ...filterData } = searchQuery;
@@ -43,12 +43,12 @@ export const getAllCowService = async (
   }
 
   const noQuery = andConditions.length > 0 ? { $and: andConditions } : {};
-  const result = await Cow.find(noQuery)
+  const result = await Goat.find(noQuery)
     .sort(sortedCondition)
     .skip(skip)
     .limit(limit)
     .lean();
-  const totalPages = Math.ceil((await Cow.countDocuments().lean()) / limit);
+  const totalPages = Math.ceil((await Goat.countDocuments().lean()) / limit);
   return {
     meta: {
       page,
@@ -59,19 +59,19 @@ export const getAllCowService = async (
   };
 };
 
-export const updateCowByIdService = async (id: string, cowInfo: TCow) => {
-  const result = await Cow.findByIdAndUpdate({ _id: id }, cowInfo, {
+export const updateGoatByIdService = async (id: string, goatInfo: TGoat) => {
+  const result = await Goat.findByIdAndUpdate({ _id: id }, goatInfo, {
     new: true,
   });
   return result;
 };
 
-export const deleteCowByIdService = async (id: string) => {
-  const result = await Cow.findByIdAndDelete({ _id: id }, { new: true });
+export const deleteGoatByIdService = async (id: string) => {
+  const result = await Goat.findByIdAndDelete({ _id: id }, { new: true });
   return result;
 };
 
-export const getCowByIdService = async (id: string) => {
-  const result = await Cow.findOne({ _id: id }).populate("seller");
+export const getGoatByIdService = async (id: string) => {
+  const result = await Goat.findOne({ _id: id }).populate("seller");
   return result;
 };

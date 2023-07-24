@@ -1,8 +1,8 @@
 export const paginationFields = [ "page", "limit", "sortBy", "sortOrder", "searchTerm" ];
 
 // Users Constants
-export const cowSearchFields = [ "location", "breed", "category"];
-export const cowSearchQueryFields = [ "searchTerm", "location", "breed", "category", "label", "price", "weight", "age" ]
+export const searchFields = [ "location", "breed", "category"];
+export const searchQueryFields = [ "searchTerm", "location", "breed", "category", "label", "price", "weight", "age" ]
 
 export interface IPagination {
     page?: number;

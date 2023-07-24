@@ -1,9 +1,9 @@
 import { Schema } from "mongoose";
-import { CowModel, TCow } from "./cow.interfaces";
 import { ECategory, ELabel } from "../../Constants/common";
 import { model } from "mongoose";
+import { GoatModel, TGoat } from "./goat.interfaces";
 
-const cowSchema = new Schema<TCow>(
+const goatSchema = new Schema<TGoat>(
   {
     name: {
       type: String,
@@ -55,4 +55,4 @@ const cowSchema = new Schema<TCow>(
   }
 );
 
-export const Cow = model<TCow, CowModel>("Cow", cowSchema);
+export const Goat = model<TGoat, GoatModel>("Goat", goatSchema);

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { ECategory } from "../../Constants/common";
 
-export type TCow = {
+export type TGoat = {
   name: string;
   age: number;
   price: number;
@@ -13,4 +13,4 @@ export type TCow = {
   seller: mongoose.Types.ObjectId;
 };
 
-export type CowModel = mongoose.Model<TCow, Record<string, unknown>>;
+export type GoatModel = mongoose.Model<TGoat, Record<string, unknown>>;

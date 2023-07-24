@@ -1,4 +1,4 @@
-export enum ECcategory {
+export enum ECategory {
     Dairy = "Dairy",
     Beef = "Beef",
     DualPurpose = "DualPurpose",
@@ -9,6 +9,6 @@ export enum ELabel {
     soldOut = "sold out",
 };
 
-export type TSearchedCow = {
+export type TSearched = {
     searchTerm?: string;
 };

@@ -1,29 +1,23 @@
 import { RequestHandler } from "express";
-import { TCow } from "./cow.interfaces";
 import httpStatus from "http-status";
-import {
-  createCowService,
-  deleteCowByIdService,
-  getAllCowService,
-  getCowByIdService,
-  updateCowByIdService,
-} from "./cow.services";
 import AsyncHandler from "../../../Utilities/asyncHandler";
 import ServerAPIError from "../../Error/serverAPIError";
 import ResponseHandler from "../../../Utilities/responseHandler";
 import { searchQueryFields, paginationFields } from "../../Constants/paginationConstants";
 import PaginationQueryHandler from "../../../Utilities/paginationQueryHandler";
+import { TGoat } from "./goat.interfaces";
+import { createGoatService, deleteGoatByIdService, getAllGoatService, getGoatByIdService, updateGoatByIdService } from "./goat.services";
 
-export const createCow: RequestHandler = AsyncHandler(
+export const createGoat: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const cowInfo = req.body;
-    const result = await createCowService(cowInfo);
+    const result = await createGoatService(cowInfo);
     if (!result) {
       return next(
         new ServerAPIError(false, httpStatus.BAD_REQUEST, "Cow not created 💥")
       );
     }
-    ResponseHandler<TCow>(res, {
+    ResponseHandler<TGoat>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: "Cow created successfully 🎉",
@@ -32,17 +26,17 @@ export const createCow: RequestHandler = AsyncHandler(
   }
 );
 
-export const updateCowById: RequestHandler = AsyncHandler(
+export const updateGoatById: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const id = req.params.id;
     const cowInfo = req.body;
-    const result = await updateCowByIdService(id, cowInfo);
+    const result = await updateGoatByIdService(id, cowInfo);
     if (!result) {
       return next(
         new ServerAPIError(false, httpStatus.NOT_FOUND, "Cow not found 💥")
       );
     }
-    ResponseHandler<TCow>(res, {
+    ResponseHandler<TGoat>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: "Cow updated successfully 🎉",
@@ -51,17 +45,17 @@ export const updateCowById: RequestHandler = AsyncHandler(
   }
 );
 
-export const getAllCows: RequestHandler = AsyncHandler(
+export const getAllGoats: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const searchQuery =  PaginationQueryHandler(req.query, searchQueryFields);
     const paginationOptions = PaginationQueryHandler(req.query, paginationFields);
-    const result = await getAllCowService( paginationOptions, searchQuery);
+    const result = await getAllGoatService( paginationOptions, searchQuery);
     if (!result) {
       return next(
         new ServerAPIError(false, httpStatus.BAD_REQUEST, "Cows data not found 💥")
       );
     }
-    ResponseHandler<TCow[]>(res, {
+    ResponseHandler<TGoat[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: "Cow found successfully 🎉",
@@ -71,16 +65,16 @@ export const getAllCows: RequestHandler = AsyncHandler(
   }
 );
 
-export const deleteCowById: RequestHandler = AsyncHandler(
+export const deleteGoatById: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const id = req.params.id;
-    const result = await deleteCowByIdService(id);
+    const result = await deleteGoatByIdService(id);
     if (!result) {
       return next(
         new ServerAPIError(false, httpStatus.NOT_FOUND, "Cow not found 💥")
       );
     }
-    ResponseHandler<TCow>(res, {
+    ResponseHandler<TGoat>(res, {
       statusCode: httpStatus.OK,
       success: true,
       message: "Cow deleted successfully 🎉",
@@ -89,16 +83,16 @@ export const deleteCowById: RequestHandler = AsyncHandler(
   }
 );
 
-export const getCowById: RequestHandler = AsyncHandler(
+export const getGoatById: RequestHandler = AsyncHandler(
     async (req, res, next) => {
         const id = req.params.id;
-        const result = await getCowByIdService(id);
+        const result = await getGoatByIdService(id);
         if (!result) {
             return next(
             new ServerAPIError(false, httpStatus.NOT_FOUND, "Cow not found 💥")
             );
         }
-        ResponseHandler<TCow>(res, {
+        ResponseHandler<TGoat>(res, {
             statusCode: httpStatus.OK,
             success: true,
             message: "Cow found successfully 🎉",
