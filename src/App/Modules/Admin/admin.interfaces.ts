@@ -8,6 +8,7 @@ export type TAdmin = {
     firstName: string;
     lastName: string;
   };
+  img?: string;
   phoneNumber?: string;
   role: string;
   address: string;

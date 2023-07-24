@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
 import { OrderModel, TOrder } from "./order.interface";
 import { Cow } from "../Cow/cow.model";
+import { Goat } from "../Goat/goat.model";
 
 const orderSchema = new Schema<TOrder>({
     buyer: {
@@ -11,7 +12,10 @@ const orderSchema = new Schema<TOrder>({
     cow: {
         type: Schema.Types.ObjectId,
         ref: "Cow",
-        required: true,
+    },
+    goat: {
+        type: Schema.Types.ObjectId,
+        ref: "Goat",
     },
     seller: {
         type: Schema.Types.ObjectId,
@@ -34,6 +38,9 @@ const orderSchema = new Schema<TOrder>({
 orderSchema.pre<TOrder>("save", async function (next) {
     if (this.buyer && this.cow) {
         const sellerId = await Cow.findById(this.cow).select("seller");
+        this.seller = sellerId?.seller;
+    }else if(this.buyer && this.goat){
+        const sellerId = await Goat.findById(this.goat).select("seller");
         this.seller = sellerId?.seller;
     }
     next();

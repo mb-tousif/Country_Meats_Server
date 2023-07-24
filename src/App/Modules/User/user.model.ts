@@ -19,6 +19,10 @@ const userSchema = new Schema<TUser>({
     required: [true, "Email is required"],
     unique: true,
   },
+  img: {
+    type: String,
+    default: "https://i.imgur.com/HeIi0wU.png",
+  },
   phoneNumber: {
     type: String,
     required: true,

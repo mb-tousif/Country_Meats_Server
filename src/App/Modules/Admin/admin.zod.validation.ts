@@ -13,6 +13,7 @@ const createAdminZodValidation = z.object({
         email: z.string({
             required_error: "Enter a valid email number",
         }).email(),
+        img: z.string().optional(),
         phoneNumber: z.string({
             required_error: "Enter a valid phone number",
         }).min(10).max(13),

@@ -18,6 +18,10 @@ const cowSchema = new Schema<TCow>(
       type: Number,
       required: true,
     },
+    img: {
+      type: String,
+      default: "https://img.freepik.com/free-vector/eid-al-adha-celebration-illustration_23-2148971420.jpg",
+    },
     location: {
       type: String,
       required: true,

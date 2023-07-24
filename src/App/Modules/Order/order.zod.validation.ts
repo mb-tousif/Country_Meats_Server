@@ -10,9 +10,8 @@ const createOrderZodValidation = z.object({
         buyer: z.string().refine(isObjectId, {
             message: "objectId must be a valid ObjectId",
           }),
-        cow: z.string().refine(isObjectId, {
-            message: "objectId must be a valid ObjectId",
-            }),
+        cow: z.string().refine(isObjectId).optional(),
+        goat: z.string().refine(isObjectId).optional(),
         quantity: z.number().min(1).optional(),
         totalPayment: z.number().min(1).optional(),
     }),

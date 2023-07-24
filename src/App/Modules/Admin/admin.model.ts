@@ -22,6 +22,10 @@ const adminSchema = new Schema<TAdmin>(
       type: String,
       unique: true,
     },
+    img: {
+      type: String,
+      default: "https://i.imgur.com/HeIi0wU.png",
+    },
     name: {
       firstName: {
         type: String,

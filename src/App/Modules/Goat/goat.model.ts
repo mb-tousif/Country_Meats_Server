@@ -14,6 +14,10 @@ const goatSchema = new Schema<TGoat>(
       type: Number,
       required: true,
     },
+    img: {
+      type: String,
+      default: "https://img.freepik.com/free-vector/realistic-summer-landscape-with-cute-white-goat-goatling-green-meadow-background-with-mountains-blue-sky-vector-illustration_1284-74081.jpg",
+    },
     price: {
       type: Number,
       required: true,

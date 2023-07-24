@@ -11,6 +11,7 @@ const createUserZodSchema = z.object({
     password: z.string({
         required_error: "Password is required",
     }).min(6).max(20),
+    img: z.string().optional(),
     name: z.object({
         firstName: z.string({
             required_error: "First name is required",

@@ -5,6 +5,7 @@ export type TCow = {
   name: string;
   age: number;
   price: number;
+  img?: string;
   location: string;
   breed: string;
   weight: number;

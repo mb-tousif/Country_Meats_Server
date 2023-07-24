@@ -3,6 +3,7 @@ import { ECategory } from "../../Constants/common";
 
 export type TGoat = {
   name: string;
+  img: string;
   age: number;
   price: number;
   location: string;
