@@ -1,109 +1,66 @@
 [
-    {
-      "name": {
-        "firstName": "Jhankar",
-        "lastName": "Mahbub"
-      },
-      "password": "JhankarPh",
-      "phoneNumber": "+880132345689",
-      "role": "buyer",
-      "address": "Dhaka",
-      "budget": 5000000
+  {
+    "email": "john.doe@example.com",
+    "password": "jhon@23",
+    "name": {
+      "firstName": "John",
+      "lastName": "Doe"
     },
-    {
-      "name": {
-        "firstName": "John",
-        "lastName": "Doe"
-      },
-      "password": "Password123",
-      "phoneNumber": "+880178945632",
-      "role": "buyer",
-      "address": "New York",
-      "budget": 1000000
+    "img": "https://img.freepik.com/free-vector/follow-me-social-business-theme-design_24877-50426.jpg",
+    "phoneNumber": "123-456-7890",
+    "role": "admin",
+    "address": "123 Main Street, City, State, Country"
+  },
+  {
+    "name": {
+      "firstName": "Jhankar",
+      "lastName": "Mahbub"
     },
-    {
-      "name": {
-        "firstName": "Jane",
-        "lastName": "Smith"
-      },
-      "password": "SecurePass",
-      "phoneNumber": "+880199876543",
-      "role": "buyer",
-      "address": "London",
-      "budget": 3000000
+    "email": "phero.jhankar@gmail.com",
+    "password": "JhankarPh",
+    "phoneNumber": "+880132345689",
+    "role": "buyer",
+    "address": "Dhaka",
+    "img": "https://img.freepik.com/free-vector/man-look-graphic-chart-business-analytics-concept-big-data-processing-icon_39422-761.jpg",
+    "budget": 5000000
+  },
+  {
+    "name": {
+      "firstName": "Jane",
+      "lastName": "Smith"
     },
-    {
-      "name": {
-        "firstName": "Michael",
-        "lastName": "Johnson"
-      },
-      "password": "MyPass123",
-      "phoneNumber": "+880187654321",
-      "role": "buyer",
-      "address": "Los Angeles",
-      "budget": 2500000
+    "email": "jane.smith@gmail.com",
+    "password": "Jane@23",
+    "img": "https://img.freepik.com/free-vector/flat-customer-support-illustration_23-2148899114.jpg",
+    "phoneNumber": "+880199876543",
+    "role": "buyer",
+    "address": "London",
+    "budget": 3000000
+  },
+  {
+    "email": "mark.johnson@gmail.com",
+    "password": "Mark@23",
+    "img": "https://img.freepik.com/free-vector/admin-concept-illustration_114360-2139.jpg",
+    "phoneNumber": "555-555-5555",
+    "name": {
+      "firstName": "Mark",
+      "lastName": "Johnson"
     },
-    {
-      "name": {
-        "firstName": "Emily",
-        "lastName": "Brown"
-      },
-      "password": "SecretWord",
-      "phoneNumber": "+880144738291",
-      "role": "buyer",
-      "address": "Sydney",
-      "budget": 4000000
+    "role": "seller",
+    "address": "Cumilla, Bagladesh",
+    "income": 0
+  },
+  {
+    "email": "susan.wilson@gmail.com",
+    "password": "susan@23",
+    "img": "https://img.freepik.com/free-vector/male-businessman-character-sitting-office-workplace-computer-monitor-desk_80328-218.jpg",
+    "phoneNumber": "111-222-3333",
+    "name": {
+      "firstName": "Susan",
+      "lastName": "Wilson"
     },
-    {
-      "name": {
-        "firstName": "Oliver",
-        "lastName": "Taylor"
-      },
-      "password": "StrongPass",
-      "phoneNumber": "+880177889900",
-      "role": "seller",
-      "address": "Berlin"
-    },
-    {
-      "password": "Secure123",
-      "phoneNumber": "+880156789012",
-      "name": {
-        "firstName": "Sophia",
-        "lastName": "Lee"
-      },
-      "role": "buyer",
-      "address": "Paris",
-      "budget": 2000000
-    },
-    {
-      "name": {
-        "firstName": "Emma",
-        "lastName": "Anderson"
-      },
-      "password": "12345678",
-      "phoneNumber": "+880123456789",
-      "role": "seller",
-      "address": "Stockholm"
-    },
-    {
-      "name": {
-        "firstName": "William",
-        "lastName": "Jones"
-      },
-      "password": "Pa55word",
-      "phoneNumber": "+880198765432",
-      "role": "seller",
-      "address": "Tokyo"
-    },
-    {
-      "password": "NewPass2023",
-      "phoneNumber": "+880133557788",
-      "name": {
-        "firstName": "Sarah",
-        "lastName": "Williams"
-      },
-      "role": "buyer",
-      "address": "Melbourne",
-      "budget": 2800000
-    }
-  ]
+    "role": "seller",
+    "address": "321 Oak Street, Dhaka, Bangladeh",
+    "income": 0
+  }
+]
