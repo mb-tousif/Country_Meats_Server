@@ -2,9 +2,7 @@
   "name": "auth-backend",
   "version": "1.0.0",
   "description": "",
-  "engines": {
-    "node": ">=16"
-  },
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
