@@ -34,8 +34,8 @@ const loginAuthService = (loginInfo) => __awaiter(void 0, void 0, void 0, functi
         new serverAPIError_1.default(false, http_status_1.default.BAD_REQUEST, "Password not matched 💥");
     }
     const { _id, role } = result;
-    const accessToken = (0, jwtHandler_1.generateToken)({ _id, role }, Config_1.default.jwt.secret, Config_1.default.jwt.expiresIn);
-    const refreshToken = (0, jwtHandler_1.generateToken)({ _id, role }, Config_1.default.jwt.refreshSecret, Config_1.default.jwt.refreshExpiresIn);
+    const accessToken = yield (0, jwtHandler_1.generateToken)({ _id, role }, Config_1.default.jwt.secret, Config_1.default.jwt.expiresIn);
+    const refreshToken = yield (0, jwtHandler_1.generateToken)({ _id, role }, Config_1.default.jwt.refreshSecret, Config_1.default.jwt.refreshExpiresIn);
     const data = {
         accessToken,
         refreshToken,
