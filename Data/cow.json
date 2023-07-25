@@ -1,22 +1,16 @@
 [
     {
-        "_id": "64be9e686063ada6b5a0bbb6",
         "name": "Luna",
         "age": 2,
         "price": 1300,
         "img": "https://img.freepik.com/free-vector/cute-black-cow-cartoon-animal-sticker_1308-69066.jpg",
-        "location": "Pastureland",
+        "location": "Meadow Valley",
         "breed": "Brown Swiss",
         "weight": 650,
         "label": "for sale",
-        "category": "Dairy",
-        "seller": "64be9343dcbe757e1b73f95b",
-        "createdAt": "2023-07-24T15:53:12.141Z",
-        "updatedAt": "2023-07-24T15:53:12.141Z",
-        "__v": 0
+        "category": "Dairy"
     },
     {
-        "_id": "64be980887457410c8cac11b",
         "name": "Bessie",
         "age": 3,
         "price": 1200,
@@ -25,14 +19,9 @@
         "breed": "Angus",
         "weight": 700,
         "label": "for sale",
-        "category": "Beef",
-        "seller": "64be9343dcbe757e1b73f95b",
-        "createdAt": "2023-07-24T15:26:00.216Z",
-        "updatedAt": "2023-07-24T15:26:00.216Z",
-        "__v": 0
+        "category": "Beef"
     },
     {
-        "_id": "64be9e296063ada6b5a0bbb3",
         "name": "Max",
         "age": 2,
         "price": 1100,
@@ -41,30 +30,19 @@
         "breed": "Hereford",
         "weight": 800,
         "label": "for sale",
-        "category": "DualPurpose",
-        "seller": "64be9343dcbe757e1b73f95b",
-        "createdAt": "2023-07-24T15:52:09.614Z",
-        "updatedAt": "2023-07-24T15:52:09.614Z",
-        "__v": 0
+        "category": "DualPurpose"
     },
     {
-        "_id": "64be96d187457410c8cac111",
         "name": "Molly",
         "age": 4,
         "price": 1000,
         "img": "https://img.freepik.com/free-vector/cow-smiling-cartoon-vector-illustration_96037-417.jpg",
-        "location": "Farmville",
+        "location": "Dhaka",
         "breed": "Holstein Friesian",
         "weight": 600,
-        "label": "for sale",
-        "category": "Dairy",
-        "seller": "64be9343dcbe757e1b73f95b",
-        "createdAt": "2023-07-24T15:20:49.436Z",
-        "updatedAt": "2023-07-24T15:20:49.436Z",
-        "__v": 0
+        "category": "Dairy"
     },
     {
-        "_id": "64be9d2c6063ada6b5a0bbaa",
         "name": "Daisy",
         "age": 5,
         "price": 950,
@@ -73,10 +51,6 @@
         "breed": "Jersey",
         "weight": 550,
         "label": "for sale",
-        "category": "DualPurpose",
-        "seller": "64be9343dcbe757e1b73f95b",
-        "createdAt": "2023-07-24T15:47:56.498Z",
-        "updatedAt": "2023-07-24T15:47:56.498Z",
-        "__v": 0
+        "category": "DualPurpose"
     }
 ]

@@ -15,8 +15,8 @@ export const createAuthService = async (userInfo: TUser) => {
 };
 
 export const loginAuthService = async (loginInfo: TLoginInfo) => {
-  console.log("JWT Secret:", Config.jwt.secret);
-  console.log("JWT Refresh Secret:", Config.jwt.refreshSecret);
+  // console.log("JWT Secret:", Config.jwt.secret);
+  // console.log("JWT Refresh Secret:", Config.jwt.refreshSecret);
     const result = await User.findOne({ email: loginInfo.email });
     if (!result) {
       new ServerAPIError(false, httpStatus.BAD_REQUEST, "User not Found 💥")
