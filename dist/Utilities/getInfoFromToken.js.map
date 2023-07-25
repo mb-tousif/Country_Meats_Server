@@ -1,1 +1,0 @@
-{"version":3,"file":"getInfoFromToken.js","sourceRoot":"","sources":["../../src/Utilities/getInfoFromToken.ts"],"names":[],"mappings":";;;;;;AAAA,gEAA+C;AAC/C,uDAA+B;AAExB,MAAM,oBAAoB,GAAG,CAAC,KAAa,EAAc,EAAE;IAC9D,MAAM,YAAY,GAAG,sBAAG,CAAC,MAAM,CAAC,KAAK,EAAE,gBAAM,CAAC,GAAG,CAAC,MAAgB,CAAe,CAAC;IAClF,OAAO,YAAY,CAAC;AACxB,CAAC,CAAA;AAHY,QAAA,oBAAoB,wBAGhC"}
