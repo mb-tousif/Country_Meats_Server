@@ -25,6 +25,8 @@ const createAuthService = (userInfo) => __awaiter(void 0, void 0, void 0, functi
 });
 exports.createAuthService = createAuthService;
 const loginAuthService = (loginInfo) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log("JWT Secret:", Config_1.default.jwt.secret);
+    console.log("JWT Refresh Secret:", Config_1.default.jwt.refreshSecret);
     const result = yield user_model_1.User.findOne({ email: loginInfo.email });
     if (!result) {
         new serverAPIError_1.default(false, http_status_1.default.BAD_REQUEST, "User not Found 💥");
