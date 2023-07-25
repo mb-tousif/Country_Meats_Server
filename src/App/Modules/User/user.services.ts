@@ -2,7 +2,8 @@ import httpStatus from "http-status";
 import { TUser } from "./user.interfaces";
 import { User } from "./user.model";
 import ServerAPIError from "../../Error/serverAPIError";
-import { getUserInfoFromToken } from "../../../Utilities/getInfoFromToken";
+import { verifyToken } from "../../../Utilities/jwtHandler";
+import Config from "../../../Config";
 
 export const getAllUserService = async () => {
   const result = await User.find().select("-password").lean();
@@ -43,7 +44,7 @@ export const getAllUserByIdService = async (id: string) => {
 };
 
 export const getUserProfileService = async (token: string) => {
-  const userInfo = getUserInfoFromToken(token);
+  const userInfo = verifyToken(token, Config.jwt.secret as string);
   const { _id } = userInfo;
   const result = await User.findOne({ _id });
   return result;
@@ -53,7 +54,7 @@ export const updateProfileService = async (
   token: string,
   userInfo: Partial<TUser>
 ) => {
-    const { _id } = getUserInfoFromToken(token);
+    const { _id } = verifyToken(token, Config.jwt.secret as string);
   const user = await User.findOne({ _id});
   if (!user) {
     throw new ServerAPIError(false, httpStatus.NOT_FOUND, "User not found 💥");

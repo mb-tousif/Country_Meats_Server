@@ -36,7 +36,6 @@ const cowSchema = new Schema<TCow>(
     },
     label: {
       type: String,
-      required: true,
       enum: ELabel,
       default: ELabel.forSale,
     },

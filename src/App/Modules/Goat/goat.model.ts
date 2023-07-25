@@ -36,7 +36,6 @@ const goatSchema = new Schema<TGoat>(
     },
     label: {
       type: String,
-      required: true,
       enum: ELabel,
       default: ELabel.forSale,
     },

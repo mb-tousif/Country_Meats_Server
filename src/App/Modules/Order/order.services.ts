@@ -3,9 +3,10 @@ import ServerAPIError from "../../Error/serverAPIError";
 import { TOrder } from "./order.interface";
 import { Order } from "./order.model";
 import httpStatus from "http-status";
-import { getUserInfoFromToken } from "../../../Utilities/getInfoFromToken";
 import { Cow } from "../Cow/cow.model";
 import { User } from "../User/user.model";
+import Config from "../../../Config";
+import { verifyToken } from "../../../Utilities/jwtHandler";
 
 export const createOrderService = async (orderInfo: TOrder) => {
   const { buyer, cow, quantity = 1 } = orderInfo;
@@ -55,7 +56,7 @@ export const createOrderService = async (orderInfo: TOrder) => {
 };
 
 export const getAllOrdersService = async (token:string) => {
-  const userInfo = getUserInfoFromToken(token);
+  const userInfo = verifyToken(token, Config.jwt.secret as string);
   const { _id, role } = userInfo;
   const orders = (role !== "admin") ? (await Order.find({ $or: [{ buyer: _id }, { seller: _id }] }).populate("buyer").populate("cow").populate("seller")): (await Order.find().populate("buyer").populate("cow").populate("seller"));
   if (!orders || orders.length === 0 ) {
@@ -65,7 +66,7 @@ export const getAllOrdersService = async (token:string) => {
 };
 
 export const getOrderByIdService = async (token:string, id:string): Promise<TOrder> => {
-  const userInfo = getUserInfoFromToken(token);
+  const userInfo = verifyToken(token, Config.jwt.secret as string);
   const { _id } = userInfo;
   if (id !== _id) {
     throw new ServerAPIError(false, httpStatus.UNAUTHORIZED, "User id not matched 💥");

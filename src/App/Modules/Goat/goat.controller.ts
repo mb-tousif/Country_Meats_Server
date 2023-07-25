@@ -7,11 +7,22 @@ import { searchQueryFields, paginationFields } from "../../Constants/paginationC
 import PaginationQueryHandler from "../../../Utilities/paginationQueryHandler";
 import { TGoat } from "./goat.interfaces";
 import { createGoatService, deleteGoatByIdService, getAllGoatService, getGoatByIdService, updateGoatByIdService } from "./goat.services";
+import Config from "../../../Config";
+import { verifyToken } from "../../../Utilities/jwtHandler";
 
 export const createGoat: RequestHandler = AsyncHandler(
   async (req, res, next) => {
-    const cowInfo = req.body;
-    const result = await createGoatService(cowInfo);
+    const goatInfo = req.body;
+    const token = req.headers.authorization as string;
+    const verifiedToken = verifyToken(token, Config.jwt.secret as string);
+    if (!verifiedToken) {
+        return next(
+            new ServerAPIError(false, httpStatus.UNAUTHORIZED, "Token not found 💥")
+        );
+    }
+    const { _id } = verifiedToken;
+    goatInfo.seller = _id;
+    const result = await createGoatService(goatInfo);
     if (!result) {
       return next(
         new ServerAPIError(false, httpStatus.BAD_REQUEST, "Cow not created 💥")

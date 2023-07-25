@@ -22,15 +22,10 @@ const createGoatZodValidation = z.object({
         required_error: "Weight is required",
       })
       .min(1),
-    label: z.enum(["for sale", "sold"], {
-      required_error: "Label is required",
-    }),
+    label: z.enum(["for sale", "sold"]).optional(),
     category: z.enum(["Beef", "Dairy", "DualPurpose"], {
       required_error: "Category is required",
     }),
-    seller: z.string().refine(isObjectId, {
-        message: "objectId must be a valid ObjectId",
-      }),
   }),
 });
 

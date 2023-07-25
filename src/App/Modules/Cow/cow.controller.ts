@@ -13,10 +13,21 @@ import ServerAPIError from "../../Error/serverAPIError";
 import ResponseHandler from "../../../Utilities/responseHandler";
 import { searchQueryFields, paginationFields } from "../../Constants/paginationConstants";
 import PaginationQueryHandler from "../../../Utilities/paginationQueryHandler";
+import { verifyToken } from "../../../Utilities/jwtHandler";
+import Config from "../../../Config";
 
 export const createCow: RequestHandler = AsyncHandler(
   async (req, res, next) => {
     const cowInfo = req.body;
+    const token = req.headers.authorization as string;
+    const verifiedToken = verifyToken(token, Config.jwt.secret as string);
+    if (!verifiedToken) {
+        return next(
+            new ServerAPIError(false, httpStatus.UNAUTHORIZED, "Token not found 💥")
+        );
+    }
+    const { _id } = verifiedToken;
+    cowInfo.seller = _id;
     const result = await createCowService(cowInfo);
     if (!result) {
       return next(
